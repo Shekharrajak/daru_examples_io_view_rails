@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The Rails app is created to solve the some real world problems. Currently Me(@Shekharrrajak) & @athityakumar trying to show how daru-view and daru-io is useful.
 
-Things you may want to cover:
+See the app working by following these commands :
 
-* Ruby version
+```
 
-* System dependencies
+bundle install
+bundle exec rails s
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
