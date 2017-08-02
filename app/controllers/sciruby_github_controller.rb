@@ -29,12 +29,33 @@ class ScirubyGithubController < ApplicationController
 
   end
 
+  def watchers
+    # getting data from url : https://api.github.com/orgs/Sciruby/repos
+    # An example: http://nbviewer.jupyter.org/github/athityakumar/daru-io/blob/iruby-examples/iruby/json_importer.ipynb
+    @df_watchers = Daru::DataFrame.from_json 'https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', watchers: '$..watchers'
+
+    opts = {
+      type: :pie,
+      adapter: :googlecharts,
+      height: 500,
+      width: 1000,
+      title: 'Sciruby Popular repos (in the view of number of watchers)',
+      is3D: true
+    }
+    table_opts = {
+      adapter: :googlecharts, pageSize: 10,
+      height: 300, width: 400
+    }
+    @df_watchers_table = Daru::View::Table.new(@df_watchers, table_opts)
+    @df_watchers_pie_chart = Daru::View::Plot.new(@df_watchers_table.table, opts)
+
+  end
 
   private
 
   def resolve_layout
    case action_name
-     when "repo"
+     when 'repo', 'watchers'
       # setting the library is not needed, if you are parsing the
       # `adapter` option in plot or table.
       # Daru::View.plotting_library = :highcharts

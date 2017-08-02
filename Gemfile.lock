@@ -15,6 +15,12 @@ GIT
       nyaplot
 
 GIT
+  remote: https://github.com/Shekharrajak/data_tables.git
+  revision: ad2a655c1388737b84ec6253a5ee1b2950aa8d01
+  specs:
+    data_tables (0.1.0)
+
+GIT
   remote: https://github.com/athityakumar/daru-io.git
   revision: 67f0d6ba0d6caf79e3631828d10c817b226c958a
   specs:
@@ -212,6 +218,7 @@ DEPENDENCIES
   daru!
   daru-io!
   daru-view!
+  data_tables!
   jbuilder (~> 2.5)
   json
   jsonpath
