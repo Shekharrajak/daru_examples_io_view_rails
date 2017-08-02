@@ -1,18 +1,14 @@
 
-<div class="span12 pagination-centered" style="text-align: center;">
+<div style="text-align: center;">
     <h3> SciRuby github data analysis (Using daru-view/googlecharts)</h3>
     <b>Data is taken from url : https://api.github.com/orgs/Sciruby/repos </b>
     <p style="left: 50%">
       <b>SciRuby Datatable : </b>
-      <%=raw @df_repo_table.div %>
+      <%=raw @df_watchers_table.div %>
 
       <b>Chart : (Column chart) </b>
       <br>
-      <%=raw @df_repos_col_chart.div %>
-
-      <b>Chart : (histogram chart) </b>
-      <br>
-      <%=raw @df_repos_histo_chart.div %>
+      <%=raw @df_watchers_pie_chart.div %>
 
     </p>
     <br>
