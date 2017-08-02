@@ -6,18 +6,6 @@ GIT
       backports
 
 GIT
-  remote: https://github.com/SciRuby/nyaplot.git
-  revision: 662ebc60b0d1e9fbebe7e06530d8450d266ebbdd
-  specs:
-    nyaplot (0.1.6)
-
-GIT
-  remote: https://github.com/Shekharrajak/daru-view.git
-  revision: 0373c3fb3f79f274d287f7e0ef574b02b9399a3e
-  specs:
-    daru-view (0.1.0)
-
-GIT
   remote: https://github.com/athityakumar/daru-io.git
   revision: 67f0d6ba0d6caf79e3631828d10c817b226c958a
   specs:
@@ -206,10 +194,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   daru!
   daru-io!
-  daru-view!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
-  nyaplot!
   puma (~> 3.7)
   rails (~> 5.1.2)
   sass-rails (~> 5.0)

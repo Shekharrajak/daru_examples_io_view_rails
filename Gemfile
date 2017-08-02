@@ -7,10 +7,15 @@ end
 
 # fetch from the github master branch
 gem 'daru', :git => 'https://github.com/SciRuby/daru.git'
-gem 'nyaplot', git: 'https://github.com/SciRuby/nyaplot.git'
+# gem 'nyaplot', git: 'https://github.com/SciRuby/nyaplot.git'
 
-gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
 gem 'daru-io', git: 'https://github.com/athityakumar/daru-io.git'
+# gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
+# gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
+# gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
+
+# gem 'daru', path: '/Users/shekharrajak/Documents/gsoc17/daru'
+# gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
@@ -54,6 +59,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
