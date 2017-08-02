@@ -9,10 +9,12 @@ end
 gem 'daru', :git => 'https://github.com/SciRuby/daru.git'
 # gem 'nyaplot', git: 'https://github.com/SciRuby/nyaplot.git'
 
-gem 'daru-io', git: 'https://github.com/athityakumar/daru-io.git'
+gem 'daru-io', :git => 'https://github.com/athityakumar/daru-io.git', require: 'daru/io/importers/json'
+gem 'jsonpath'
+gem 'json'
 # gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
-# gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
+gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
 
 # gem 'daru', path: '/Users/shekharrajak/Documents/gsoc17/daru'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'

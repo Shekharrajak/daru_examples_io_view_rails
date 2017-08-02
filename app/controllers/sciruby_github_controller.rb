@@ -5,56 +5,20 @@ class ScirubyGithubController < ApplicationController
   def repo
     # getting data from url : https://api.github.com/orgs/Sciruby/repos
     # An example: http://nbviewer.jupyter.org/github/athityakumar/daru-io/blob/iruby-examples/iruby/json_importer.ipynb
-    @df_repos = Daru::DataFrame.from_json 'https://api.github.com/orgs/Sciruby/repos', index: '$..name', forks: '$..forks', stars: '$..stargazers_count', size: '$..size', open_issues: '$..open_issues_count'
+    @df_repos = Daru::DataFrame.from_json 'https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', forks: '$..forks', open_issues: '$..open_issues_count'
 
     opts = {
-        title: {
-          text: 'Column 3d demo'
-      },
-
-      tooltip: {
-          headerFormat: '<b>{series.name}</b><br />',
-          pointFormat: 'x = {point.x}, y = {point.y}'
-      },
-      chart: {
-        :defaultSeriesType=>"column" , :margin=> 75,
-        options3d: {
-            enabled: true,
-            alpha: 15,
-            beta: 15,
-            depth: 50,
-            viewDistance: 25}
-        },
-      plotOptions: {
-        :column=>{
-            :allowPointSelect=>true,
-            :cursor=>"pointer" ,
-            :dataLabels=>{
-              :enabled=>true,
-              :color=>"black",
-              :style=>{
-                :font=>"13px Trebuchet MS, Verdana, sans-serif"
-              }
-            },
-            depth: 25
-
-          }
-        },
-      legend: {
-        :layout=> 'vertical',
-        :style=> {
-          :left=> 'auto', :bottom=> 'auto',:right=> '50px',:top=> '100px'}
-        },
-      adapter: :highcharts
+      type: :column,
+      adapter: :googlecharts,
+      height: 500,
+      width: 1000
     }
-
-    # series_dt = [{
-    #   :type=> 'column',
-    #   :name=> 'Browser share',
-    #   :data=> @df_repos.access_row_tuples_by_indexs()
-    # }]
-    @df_repos_chart = Daru::View::Plot.new(@df_repos, opts)
-    # @df_repos_chart.chart.series_data = series_dt
+    table_opts = {
+      adapter: :googlecharts, pageSize: 10,
+      height: 300, width: 400
+    }
+    @df_repo_table = Daru::View::Table.new(@df_repos, table_opts)
+    @df_repos_chart = Daru::View::Plot.new(@df_repo_table, opts)
 
   end
 
@@ -66,8 +30,8 @@ class ScirubyGithubController < ApplicationController
      when "repo"
       # setting the library is not needed, if you are parsing the
       # `adapter` option in plot or table.
-      Daru::View.plotting_library = :highcharts
-      "highcharts_layout"
+      # Daru::View.plotting_library = :highcharts
+      "googlecharts_layout"
      # when "googlecharts"
      #  Daru::View.plotting_library = :googlecharts
      #  "googlecharts_layout"
