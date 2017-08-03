@@ -7,12 +7,11 @@ GIT
 
 GIT
   remote: https://github.com/Shekharrajak/daru-view.git
-  revision: 0373c3fb3f79f274d287f7e0ef574b02b9399a3e
+  revision: d544d45638e4ba43eebce019ef70bfd3ef50ec36
   specs:
     daru-view (0.1.0)
       google_visualr
       lazy_high_charts
-      nyaplot
 
 GIT
   remote: https://github.com/Shekharrajak/data_tables.git
@@ -125,8 +124,7 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
-    nyaplot (0.1.6)
-    pg (0.19.0)
+    pg (0.21.0)
     public_suffix (2.0.5)
     puma (3.9.1)
     rack (2.0.3)
