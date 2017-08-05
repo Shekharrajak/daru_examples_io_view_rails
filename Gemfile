@@ -6,19 +6,22 @@ git_source(:github) do |repo_name|
 end
 
 # fetch from the github master branch
-gem 'daru', :git => 'https://github.com/SciRuby/daru.git'
+# gem 'daru-view', path: '/Users/athityakumar/Documents/GitHub/Sciruby/daru-view'
+# gem 'daru-io', path: '/Users/athityakumar/Documents/GitHub/Sciruby/daru-io'
 # gem 'nyaplot', git: 'https://github.com/SciRuby/nyaplot.git'
 
-gem 'daru-io', :git => 'https://github.com/athityakumar/daru-io.git', require: 'daru/io/importers/json'
+gem 'daru-io', :git => 'https://github.com/athityakumar/daru-io.git'
+gem 'daru', :git => 'https://github.com/SciRuby/daru.git'
 gem 'jsonpath'
 gem 'json'
+gem 'spreadsheet'
 # gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
+gem 'google_visualr'
 gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
 
 # issue : https://github.com/Shekharrajak/daru_examples_io_view_rails/issues/3
 gem 'data_tables', git: 'https://github.com/Shekharrajak/data_tables.git'
-
 # gem 'daru', path: '/Users/shekharrajak/Documents/gsoc17/daru'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
 
