@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/SciRuby/daru.git
-  revision: b91979c0c9c226707479c4b9ee4f76b7cdb83507
+  revision: 7bc126bbe6d0699ef582c86805f4495f47849a25
   specs:
     daru (0.1.6)
       backports
@@ -25,10 +25,17 @@ GIT
 
 GIT
   remote: https://github.com/athityakumar/daru-io.git
-  revision: 6c1b6da54d566735f841419e1690c2f09e5179a4
+  revision: d08cc6bc5e922e777d8a9fb2e287a071a194b4ef
   specs:
     daru-io (0.1.0)
       daru (~> 0.1.5)
+
+GIT
+  remote: https://github.com/athityakumar/rsruby
+  revision: bf2b0f49e64d78abf44da4637913064509578e57
+  branch: fix-stack-error-with-rails
+  specs:
+    rsruby (0.5.1.1d)
 
 GEM
   remote: https://rubygems.org/
@@ -233,6 +240,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.7)
   rails (~> 5.1.2)
+  rsruby!
   sass-rails (~> 5.0)
   selenium-webdriver
   spreadsheet
@@ -245,4 +253,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.1
+   1.15.3

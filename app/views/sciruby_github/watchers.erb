@@ -2,11 +2,7 @@
 <div style="text-align: center;">
     <h3> SciRuby github data analysis (Using daru-view/googlecharts)</h3>
     <b>Data is taken from url : https://api.github.com/orgs/Sciruby/repos </b>
-    <br><b>Export to : &nbsp;
-      <a href="watchers.csv" download="watchers.csv">CSV</a>
-       | 
-      <a href="watchers.xls" download="watchers.xls">XLS</a>
-    </b>
+    <%= render 'export' %>
     <p style="left: 50%">
       <b>SciRuby Datatable : </b>
       <%=raw @df_watchers_table.div %>
