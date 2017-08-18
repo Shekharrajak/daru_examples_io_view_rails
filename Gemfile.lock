@@ -7,9 +7,10 @@ GIT
 
 GIT
   remote: https://github.com/Shekharrajak/daru-view.git
-  revision: a8c94e9914744366509016ec5f5c230911c447af
+  revision: 6e22f30b9235f5a7ae0dfec838dd5d000e4cc484
   specs:
     daru-view (0.1.0)
+      actionview
       daru
       data_tables
       google_visualr
@@ -28,6 +29,12 @@ GIT
   specs:
     daru-io (0.1.0)
       daru (~> 0.1.5)
+
+GIT
+  remote: https://github.com/winston/google_visualr.git
+  revision: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
+  specs:
+    google_visualr (2.5.1)
 
 GEM
   remote: https://rubygems.org/
@@ -98,7 +105,6 @@ GEM
     ffi (1.9.18)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    google_visualr (2.5.1)
     hash-deep-merge (0.1.1)
     i18n (0.8.6)
     jbuilder (2.7.0)
@@ -221,6 +227,7 @@ DEPENDENCIES
   daru-io!
   daru-view!
   data_tables!
+  google_visualr!
   jbuilder (~> 2.5)
   json
   jsonpath
