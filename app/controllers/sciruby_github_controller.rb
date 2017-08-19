@@ -29,17 +29,6 @@ class ScirubyGithubController < ApplicationController
     @df_repos_histo_chart = Daru::View::Plot.new(@df_repo_table, opts)
 
     export(@df_repos)
-    # respond_to do |format|
-    #   format.html
-    #   format.csv do
-    #     @df_repos.to_csv('repos.csv')
-    #     send_data(File.read('./repos.csv'))
-    #   end
-    #   format.xls do
-    #     @df_repos.to_excel('repos.xls')
-    #     send_data(File.read('./repos.xls'))
-    #   end
-    # end
   end
 
   def watchers
@@ -63,17 +52,6 @@ class ScirubyGithubController < ApplicationController
     @df_watchers_pie_chart = Daru::View::Plot.new(@df_watchers_table.table, opts)
 
     export(@df_watchers)
-    # respond_to do |format|
-    #   format.html
-    #   format.csv do
-    #     @df_watchers.to_csv('watchers.csv')
-    #     send_data(File.read('./watchers.csv'))
-    #   end
-    #   format.xls do
-    #     @df_watchers.to_excel('watchers.xls')
-    #     send_data(File.read('./watchers.xls'))
-    #   end
-    # end
   end
 
   private
