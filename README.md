@@ -10,3 +10,11 @@ bundle install
 bundle exec rails s
 
 ```
+
+Heroku demo : 
+
+https://daru-examples-io-view-rails.herokuapp.com/
+
+https://daru-examples-io-view-rails.herokuapp.com//sciruby/repos
+
+https://daru-examples-io-view-rails.herokuapp.com/sciruby/watchers
