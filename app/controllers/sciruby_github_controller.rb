@@ -1,11 +1,12 @@
 class ScirubyGithubController < ApplicationController
 
+  include ScirubyGithubHelper
   layout :resolve_layout
 
-  def repo
+  def repos
     # getting data from url : https://api.github.com/orgs/Sciruby/repos
     # An example: http://nbviewer.jupyter.org/github/athityakumar/daru-io/blob/iruby-examples/iruby/json_importer.ipynb
-    @df_repos = Daru::DataFrame.from_json 'https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', forks: '$..forks', open_issues: '$..open_issues_count'
+    @df_repos = Daru::DataFrame.from_json('https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', forks: '$..forks', open_issues: '$..open_issues_count')
 
     opts = {
       type: :column,
@@ -27,12 +28,13 @@ class ScirubyGithubController < ApplicationController
     }
     @df_repos_histo_chart = Daru::View::Plot.new(@df_repo_table, opts)
 
+    export(@df_repos)
   end
 
   def watchers
     # getting data from url : https://api.github.com/orgs/Sciruby/repos
     # An example: http://nbviewer.jupyter.org/github/athityakumar/daru-io/blob/iruby-examples/iruby/json_importer.ipynb
-    @df_watchers = Daru::DataFrame.from_json 'https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', watchers: '$..watchers'
+    @df_watchers = Daru::DataFrame.from_json('https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', watchers: '$..watchers')
 
     opts = {
       type: :pie,
@@ -49,13 +51,14 @@ class ScirubyGithubController < ApplicationController
     @df_watchers_table = Daru::View::Table.new(@df_watchers, table_opts)
     @df_watchers_pie_chart = Daru::View::Plot.new(@df_watchers_table.table, opts)
 
+    export(@df_watchers)
   end
 
   private
 
   def resolve_layout
    case action_name
-     when 'repo', 'watchers'
+     when 'repos', 'watchers'
       # setting the library is not needed, if you are parsing the
       # `adapter` option in plot or table.
       # Daru::View.plotting_library = :highcharts
