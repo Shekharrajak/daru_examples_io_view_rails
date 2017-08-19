@@ -24,13 +24,17 @@ gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
 
 # issue : https://github.com/Shekharrajak/daru_examples_io_view_rails/issues/3
 gem 'data_tables', git: 'https://github.com/Shekharrajak/data_tables.git'
+
+# remove this after https://github.com/Shekharrajak/daru_examples_io_view_rails/issues/8#issuecomment-323335270
+gem 'google_visualr', git: 'https://github.com/winston/google_visualr.git'
+
 # gem 'daru', path: '/Users/shekharrajak/Documents/gsoc17/daru'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
