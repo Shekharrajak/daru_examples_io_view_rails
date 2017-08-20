@@ -6,13 +6,19 @@ git_source(:github) do |repo_name|
 end
 
 # fetch from the github master branch
-gem 'daru', :git => 'https://github.com/SciRuby/daru.git'
+# gem 'daru-view', path: '/Users/athityakumar/Documents/GitHub/Sciruby/daru-view'
+# gem 'daru-io', path: '/Users/athityakumar/Documents/GitHub/Sciruby/daru-io'
 # gem 'nyaplot', git: 'https://github.com/SciRuby/nyaplot.git'
 
-gem 'daru-io', :git => 'https://github.com/athityakumar/daru-io.git', require: 'daru/io'
+gem 'daru-io', :git => 'https://github.com/athityakumar/daru-io.git'
+gem 'daru', :git => 'https://github.com/SciRuby/daru.git'
+# gem 'rsruby'
+# gem 'rsruby', :git => 'https://github.com/athityakumar/rsruby', :branch => 'fix-stack-error-with-rails'
 gem 'jsonpath'
 gem 'json'
 gem 'mechanize'
+gem 'spreadsheet'
+
 # gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
 gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'

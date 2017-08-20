@@ -2,6 +2,7 @@
 <div class="span12 pagination-centered" style="text-align: center;">
     <h3> SciRuby github data analysis (Using daru-view/googlecharts)</h3>
     <b>Data is taken from url : https://api.github.com/orgs/Sciruby/repos </b>
+    <%= render 'export' %>
     <p style="left: 50%">
       <b>SciRuby Datatable : </b>
       <%=raw @df_repo_table.div %>
