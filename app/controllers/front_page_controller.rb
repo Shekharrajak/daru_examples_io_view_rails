@@ -4,19 +4,22 @@ class FrontPageController < ApplicationController
 
   def home
     @df_links = Daru::DataFrame.new({
-      routes:   [
-        'Repo forks and issue count',
-        'Popular repo of SciRuby'
+      Routes:   [
+          'Repo forks and issue count',
+          'Popular repo of SciRuby',
+          'Indian election data'
         ],
       Desc:     [
-        'Analysis of fork and issue count present in sciruby org',
-        'Popular SciRuby repo in the point of view of number of watchers'
+          'Analysis of fork and issue count present in sciruby org',
+          'Popular SciRuby repo in the point of view of number of watchers',
+          'Plotting a small dataset of obtained election results'
         ],
-      Localhost_link: [
-        'http://localhost:3000/sciruby/repos',
-        'http://localhost:3000/sciruby/watchers'
+      Link: [
+          "<a href='./sciruby/repos' target='_blank'>sciruby/repos</a>",
+          "<a href='./sciruby/watchers' target='_blank'>sciruby/watchers</a>",
+          "<a href='./election/data' target='_blank'>election/data</a>"
         ]
-      }, order: [:routes, :Desc, :Localhost_link])
+      }, order: [:Routes, :Desc, :Link])
     @df_links_table = Daru::View::Table.new(@df_links, pageLength: 3, adapter: :datatables, height: 500, width: 700)
   end
 end
