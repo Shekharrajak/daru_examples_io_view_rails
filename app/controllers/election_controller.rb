@@ -1,8 +1,8 @@
-class ShareMarketController < ApplicationController
+class ElectionController < ApplicationController
 
   layout :resolve_layout
 
-  def stocks
+  def data
     @df_stock = Daru::DataFrame.from_html('http://eciresults.nic.in/PartyWiseResult.htm').first
     @df_stock.delete_row(-1)
     data = @df_stock.map_vectors { |x| [x.name, x.to_a.map { |y| y.to_i.to_s==y ? y.to_i : y } ] }.to_h
@@ -25,7 +25,7 @@ class ShareMarketController < ApplicationController
 
   def resolve_layout
    case action_name
-     when 'stocks'
+     when 'data'
       # setting the library is not needed, if you are parsing the
       # `adapter` option in plot or table.
       # Daru::View.plotting_library = :highcharts
