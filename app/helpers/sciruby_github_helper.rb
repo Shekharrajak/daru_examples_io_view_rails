@@ -17,10 +17,10 @@ module ScirubyGithubHelper
         dataframe.to_json('download.json', pretty: true)
         send_data(File.read('download.json'))
       end
-      format.rds do
-        dataframe.to_rds('download.rds', :download)
-        send_data(File.read('download.rds'))
-      end
+      # format.rds do
+      #   dataframe.to_rds('download.rds', :download)
+      #   send_data(File.read('download.rds'))
+      # end
     end
   end
 end

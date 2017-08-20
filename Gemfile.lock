@@ -31,13 +31,6 @@ GIT
       daru (~> 0.1.5)
 
 GIT
-  remote: https://github.com/athityakumar/rsruby
-  revision: bf2b0f49e64d78abf44da4637913064509578e57
-  branch: fix-stack-error-with-rails
-  specs:
-    rsruby (0.5.1.1d)
-
-GIT
   remote: https://github.com/winston/google_visualr.git
   revision: 17b97114a345baadd011e7b442b9a6c91a2b7ab5
   specs:
@@ -246,7 +239,6 @@ DEPENDENCIES
   pg
   puma (~> 3.7)
   rails (~> 5.1.2)
-  rsruby!
   sass-rails (~> 5.0)
   selenium-webdriver
   spreadsheet

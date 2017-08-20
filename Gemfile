@@ -13,7 +13,7 @@ end
 gem 'daru-io', :git => 'https://github.com/athityakumar/daru-io.git'
 gem 'daru', :git => 'https://github.com/SciRuby/daru.git'
 # gem 'rsruby'
-gem 'rsruby', :git => 'https://github.com/athityakumar/rsruby', :branch => 'fix-stack-error-with-rails'
+# gem 'rsruby', :git => 'https://github.com/athityakumar/rsruby', :branch => 'fix-stack-error-with-rails'
 gem 'jsonpath'
 gem 'json'
 gem 'spreadsheet'
