@@ -2,18 +2,38 @@
 <div class="span12 pagination-centered" style="text-align: center;">
     <h3> SciRuby github data analysis (Using daru-view/googlecharts)</h3>
     <b>Data is taken from url : https://api.github.com/orgs/Sciruby/repos </b>
-    <%= render 'export' %>
+    <%=
+      daru_download formats: %w[csv xls json], separator: '|'
+    %>
     <p style="left: 50%">
       <b>SciRuby Datatable : </b>
-      <%=raw @df_repo_table.div %>
+      <%=
+        daru_table @df_repos,
+                   adapter: :googlecharts,
+                   pageSize: 10,
+                   height: 300,
+                   width: 400
+      %>
 
       <b>Chart : (Column chart) </b>
       <br>
-      <%=raw @df_repos_col_chart.div %>
+      <%=
+        daru_chart @df_repos,
+                   type: :column,
+                   adapter: :googlecharts,
+                   height: 500,
+                   width: 1000
+      %>
 
       <b>Chart : (histogram chart) </b>
       <br>
-      <%=raw @df_repos_histo_chart.div %>
+      <%=
+        daru_chart @df_repos,
+                   type: :histogram,
+                   adapter: :googlecharts,
+                   height: 500,
+                   width: 1000
+      %>
 
     </p>
     <br>
