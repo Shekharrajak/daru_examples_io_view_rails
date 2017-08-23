@@ -6,11 +6,51 @@
   <%= render 'export' %>
 
   <p style="left: 50%">
-    <b>SciRuby Datatable : </b>
-    <%=raw @df_watchers_table.div %>
-    <b>Chart : (Column chart) </b>
+    <b>SciRuby/watchers Datatable : </b>
+
+    <%=
+      daru_table(
+        @df_watchers,
+        adapter: :googlecharts, pageSize: 10,
+        height: 300, width: 400
+      )
+    %>
+
+    <!-- User can also do :
+    df_watchers_table =
+      Daru::View::Table(@df_watchers, adapter: :googlecharts,
+        pageSize: 10, height: 300, width: 400)
+    and then
+    use df_watchers_table.div.html_safe
+     -->
+
+    <b>Chart : (Line chart) </b>
     <br>
-    <%=raw @df_watchers_pie_chart.div %>
+    <%=
+      daru_chart(
+        @df_watchers,
+        type: :line,
+        adapter: :googlecharts,
+        height: 500,
+        width: 1000
+      )
+    %>
+
+    <b>Chart : (3D Pie chart) </b>
+    <br>
+
+    <%=
+      daru_chart(
+        @df_watchers,
+        type: :pie,
+        adapter: :googlecharts,
+        height: 500,
+        width: 1000,
+        title: 'Sciruby Popular repos (in the view of number of watchers)',
+        is3D: true
+      )
+    %>
+
 
   </p>
 </div>
