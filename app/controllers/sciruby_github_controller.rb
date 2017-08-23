@@ -23,15 +23,12 @@ class ScirubyGithubController < ApplicationController
       adapter: :googlecharts, pageSize: 10,
       height: 300, width: 400
     }
-    @df_repo_table = Daru::View::Table.new(@df_repos, table_opts)
-    @df_repos_col_chart = Daru::View::Plot.new(@df_repo_table, opts)
     opts = {
       type: :histogram,
       adapter: :googlecharts,
       height: 500,
       width: 1000
     }
-    @df_repos_histo_chart = Daru::View::Plot.new(@df_repo_table, opts)
 
     export(@df_repos)
   end
