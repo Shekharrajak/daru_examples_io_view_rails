@@ -13,23 +13,7 @@ class ScirubyGithubController < ApplicationController
       format.html  # just run the sciruby_github/repos.erb
     end
 
-    opts = {
-      type: :column,
-      adapter: :googlecharts,
-      height: 500,
-      width: 1000
-    }
-    table_opts = {
-      adapter: :googlecharts, pageSize: 10,
-      height: 300, width: 400
-    }
-    opts = {
-      type: :histogram,
-      adapter: :googlecharts,
-      height: 500,
-      width: 1000
-    }
-
+    # TODO: something better than export method
     export(@df_repos)
   end
 
