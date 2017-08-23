@@ -1,20 +1,74 @@
 
 <div class="span12 pagination-centered" style="text-align: center;">
-    <h3> SciRuby github data analysis (Using daru-view/googlecharts)</h3>
-    <b>Data is taken from url : https://api.github.com/orgs/Sciruby/repos </b>
-    <%= render 'export' %>
-    <p style="left: 50%">
-      <b>SciRuby Datatable : </b>
-      <%=raw @df_repo_table.div %>
+  <h3> SciRuby github data analysis (Using daru-view/googlecharts)</h3>
+  <b>Data is taken from url : https://api.github.com/orgs/Sciruby/repos </b>
 
-      <b>Chart : (Column chart) </b>
-      <br>
-      <%=raw @df_repos_col_chart.div %>
+  <%= render 'export' %>
 
-      <b>Chart : (histogram chart) </b>
-      <br>
-      <%=raw @df_repos_histo_chart.div %>
+  <p style="left: 50%">
 
-    </p>
+    <b>SciRuby/Repos Datatable : </b>
+
+    <%=
+      daru_table(
+        @df_repos,
+        adapter: :googlecharts, pageSize: 10,
+        height: 300, width: 400
+      )
+    %>
+
+    <!-- User can also do :
+    df_repos_table =
+      Daru::View::Table(@df_repos, adapter: :googlecharts,
+        pageSize: 10, height: 300, width: 400)
+    and then
+    use df_repos_table.div.html_safe
+     -->
+
+    <b>Chart : (Column chart) </b>
     <br>
+    <%=
+      daru_chart(
+        @df_repos,
+        type: :column,
+        adapter: :googlecharts,
+        height: 500,
+        width: 1000
+      )
+    %>
+
+    <!-- User can also do :
+    df_repos_colmn_chart =
+      Daru::View::Plot(df_repos_table, type: :column,
+        adapter: :googlecharts,
+        height: 500,
+        width: 1000)
+    and then
+    use the df_repos_colmn_chart.div.html_safe
+     -->
+
+    <b>Chart : (histogram chart) </b>
+    <br>
+
+    <%=
+      daru_chart(
+        @df_repos,
+        type: :histogram,
+        adapter: :googlecharts,
+        height: 500,
+        width: 1000
+      )
+    %>
+
+    <!-- User can also do :
+    df_repos_histogram_chart =
+      Daru::View::Plot(df_repos_table, type: :histogram,
+        adapter: :googlecharts,
+        height: 500,
+        width: 1000)
+    and then
+    use df_repos_histogram_chart.div.html_safe
+     -->
+
+  </p>
 </div>
