@@ -8,6 +8,11 @@ class ScirubyGithubController < ApplicationController
     # An example: http://nbviewer.jupyter.org/github/athityakumar/daru-io/blob/iruby-examples/iruby/json_importer.ipynb
     @df_repos = Daru::DataFrame.from_json('https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', forks: '$..forks', open_issues: '$..open_issues_count')
 
+    # Actually no need of this respond_to block right now.
+    respond_to do |format|
+      format.html  # just run the sciruby_github/repos.erb
+    end
+
     opts = {
       type: :column,
       adapter: :googlecharts,
