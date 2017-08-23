@@ -19,9 +19,9 @@ gem 'json'
 gem 'mechanize'
 gem 'spreadsheet'
 
-gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
+# gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
-# gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
+gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
 
 # issue : https://github.com/Shekharrajak/daru_examples_io_view_rails/issues/3
 gem 'data_tables', git: 'https://github.com/Shekharrajak/data_tables.git'
