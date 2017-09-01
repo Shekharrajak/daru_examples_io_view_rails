@@ -18,7 +18,6 @@ gem 'jsonpath'
 gem 'json'
 gem 'mechanize'
 gem 'spreadsheet'
-
 # gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
 gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
