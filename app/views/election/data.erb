@@ -4,14 +4,36 @@
   <b>Data is taken from url : http://eciresults.nic.in/PartyWiseResult.htm </b>
   <p style="left: 50%">
     <b>SciRuby Datatable : </b>
-    <%=raw @df_stock_table.div %>
+    <%=
+      daru_table(
+        @elections,
+        adapter: :googlecharts, pageSize: 10,
+        height: 300, width: 400
+      )
+    %>
 
     <b>Chart : (Pie chart) </b>
     <br>
-    <%=raw @df_stock_pie_chart.div %>
+    <%=
+      daru_chart(
+        @elections.clone('Party', 'Won'),
+        type: :pie,
+        adapter: :googlecharts,
+        height: 500,
+        width: 1000
+      )
+    %>
 
     <b>Chart : (Histogram chart) </b>
     <br>
-    <%=raw @df_stock_col_chart.div %>
+    <%=
+      daru_chart(
+        @elections.clone('Party', 'Won'),
+        type: :histogram,
+        adapter: :googlecharts,
+        height: 500,
+        width: 1000
+      )
+    %>
   </p>
 </div>
