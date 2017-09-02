@@ -6,24 +6,28 @@ class ScirubyGithubController < ApplicationController
   def repos
     # getting data from url : https://api.github.com/orgs/Sciruby/repos
     # An example: http://nbviewer.jupyter.org/github/athityakumar/daru-io/blob/iruby-examples/iruby/json_importer.ipynb
-    @df_repos = Daru::DataFrame.from_json('https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', forks: '$..forks', open_issues: '$..open_issues_count')
-
-    # Actually no need of this respond_to block right now.
-    respond_to do |format|
-      format.html  # just run the sciruby_github/repos.erb
-    end
+    @repos = Daru::DataFrame.read_json(
+      'https://api.github.com/orgs/Sciruby/repos',
+      repo_name: '$..name',
+      forks: '$..forks',
+      open_issues: '$..open_issues_count'
+    )
 
     # TODO: something better than export method
-    export(@df_repos)
+    export(@repos)
   end
 
   def watchers
     # getting data from url : https://api.github.com/orgs/Sciruby/repos
     # An example: http://nbviewer.jupyter.org/github/athityakumar/daru-io/blob/iruby-examples/iruby/json_importer.ipynb
-    @df_watchers = Daru::DataFrame.from_json('https://api.github.com/orgs/Sciruby/repos', Repo_name: '$..name', watchers: '$..watchers')
+    @watchers = Daru::DataFrame.read_json(
+      'https://api.github.com/orgs/Sciruby/repos',
+      repo_name: '$..name',
+      watchers: '$..watchers'
+    )
 
     # TODO: something better than export method
-    export(@df_watchers)
+    export(@watchers)
   end
 
   private

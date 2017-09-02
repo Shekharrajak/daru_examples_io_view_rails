@@ -11,7 +11,7 @@
 
     <%=
       daru_table(
-        @df_repos,
+        @repos,
         adapter: :googlecharts, pageSize: 10,
         height: 300, width: 400
       )
@@ -29,7 +29,7 @@
     <br>
     <%=
       daru_chart(
-        @df_repos,
+        @repos,
         type: :column,
         adapter: :googlecharts,
         height: 500,
@@ -52,7 +52,7 @@
 
     <%=
       daru_chart(
-        @df_repos,
+        @repos,
         type: :histogram,
         adapter: :googlecharts,
         height: 500,

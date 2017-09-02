@@ -3,7 +3,7 @@ class FrontPageController < ApplicationController
   layout 'datatables_layout'
 
   def home
-    @df_links = Daru::DataFrame.new({
+    @links = Daru::DataFrame.new({
       Routes:   [
           'Repo forks and issue count',
           'Popular repo of SciRuby',
@@ -20,6 +20,6 @@ class FrontPageController < ApplicationController
           "<a href='./election/data' target='_blank'>election/data</a>"
         ]
       }, order: [:Routes, :Desc, :Link])
-    @df_links_table = Daru::View::Table.new(@df_links, pageLength: 3, adapter: :datatables, height: 500, width: 700)
+    @links_table = Daru::View::Table.new(@links, pageLength: 3, adapter: :datatables, height: 500, width: 700)
   end
 end
