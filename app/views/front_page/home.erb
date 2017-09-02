@@ -1,9 +1,50 @@
 
-<div style="text-align: center; width: 800px; margin-left: 10%">
-    <h3> SciRuby github data analysis (This table is generated using daru-view/datatables, taken dataframe as data source)</h3>
-    <b>Data is taken from url : https://api.github.com/orgs/Sciruby/repos </b>
+<div class='container'>
+  <div class='jumbotron'>
+    <h1>Daru::IO | Daru::View</h1>
     <p>
-      <br>
-      <%=raw @links_table.div %>
+      This site contains demonstration of two gems, accompanying <a href="https://github.com/sciruby/daru">daru</a>
+      data analysis gem:
     </p>
+    <div class="row">
+      <div class="col-md-6">
+        <p><a class="btn btn-lg btn-success" href="https://github.com/athithyakumar/daru-io" role="button">daru-io</a></p>
+        <p class="text-muted">A set of independent importers/exporters from various data sources and formats.</p>
+      </div>
+      <div class="col-md-6">
+        <p><a class="btn btn-lg btn-success" href="https://github.com//daru-view" role="button">daru-view</a></p>
+        <p class="text-muted">A set of view helpers for web frameworks, for pretty representations of data.</p>
+      </div>
+    </div>
+  </div>
+
+  <h1>Available examples</h1>
+  <p class="text-muted">All examples are demonstrating charts and tables from <mark>daru-view</mark>, and different techniquest from <mark>daru-io</mark>.</p>
+
+  <div class="alert alert-info">BTW, to show this table we also use <code>Daru::DataFrame</code> and <code>daru_table</code> helper</div>
+
+  <div class="view-and-code">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#view" aria-controls="view" role="tab" data-toggle="view">View</a></li>
+      <li role="presentation"><a href="#code" aria-controls="code" role="tab" data-toggle="code">Code</a></li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="view">
+        <%=
+          daru_table(@links,
+            adapter: :datatables, height: 500, width: 700,
+            paging: false, searching: false, info: false
+          )
+        %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="code">
+        <%= rouge(%{
+          daru_table(@links,
+            adapter: :datatables, height: 500, width: 700,
+            paging: false, searching: false, info: false
+          )
+        }) %>
+      </div>
+    </div>
+  </div>
 </div>

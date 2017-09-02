@@ -1,5 +1,4 @@
 class FrontPageController < ApplicationController
-
   layout 'datatables_layout'
 
   def home
@@ -15,11 +14,10 @@ class FrontPageController < ApplicationController
           'Plotting a small dataset of obtained election results'
         ],
       Link: [
-          "<a href='./sciruby/repos' target='_blank'>sciruby/repos</a>",
-          "<a href='./sciruby/watchers' target='_blank'>sciruby/watchers</a>",
-          "<a href='./election/data' target='_blank'>election/data</a>"
+        view_context.link_to('sciruby/repos', {action: 'repos', controller: 'sciruby_github'}, target: '_blank'),
+        view_context.link_to('sciruby/watchers', {action: 'watchers', controller: 'sciruby_github'}, target: '_blank'),
+        view_context.link_to('election/data', {action: 'data', controller: 'election'}, target: '_blank'),
         ]
-      }, order: [:Routes, :Desc, :Link])
-    @links_table = Daru::View::Table.new(@links, pageLength: 3, adapter: :datatables, height: 500, width: 700)
+      }, order: %i[Routes Desc Link])
   end
 end

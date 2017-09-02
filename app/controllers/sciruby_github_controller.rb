@@ -1,7 +1,7 @@
 class ScirubyGithubController < ApplicationController
 
   include ScirubyGithubHelper
-  layout :resolve_layout
+  #layout :resolve_layout
 
   def repos
     # getting data from url : https://api.github.com/orgs/Sciruby/repos
