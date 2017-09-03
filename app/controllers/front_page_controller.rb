@@ -1,6 +1,4 @@
 class FrontPageController < ApplicationController
-  layout 'datatables_layout'
-
   def home
     @links = Daru::DataFrame.new({
       Routes:   [

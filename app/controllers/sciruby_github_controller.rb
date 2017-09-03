@@ -1,7 +1,5 @@
 class ScirubyGithubController < ApplicationController
-
   include ScirubyGithubHelper
-  #layout :resolve_layout
 
   def repos
     # getting data from url : https://api.github.com/orgs/Sciruby/repos
@@ -28,25 +26,5 @@ class ScirubyGithubController < ApplicationController
 
     # TODO: something better than export method
     export(@watchers)
-  end
-
-  private
-
-  def resolve_layout
-   case action_name
-     when 'repos', 'watchers'
-      # setting the library is not needed, if you are parsing the
-      # `adapter` option in plot or table.
-      # Daru::View.plotting_library = :highcharts
-      "googlecharts_layout"
-     # when "googlecharts"
-     #  Daru::View.plotting_library = :googlecharts
-     #  "googlecharts_layout"
-     # when "datatables"
-     #  "datatables_layout"
-     else
-      Daru::View.plotting_library = :nyaplot
-      "application"
-     end
   end
 end
