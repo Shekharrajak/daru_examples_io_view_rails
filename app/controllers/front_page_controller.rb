@@ -2,14 +2,14 @@ class FrontPageController < ApplicationController
   def home
     @links = Daru::DataFrame.new({
       Routes:   [
-          'Repo forks and issue count',
-          'Popular repo of SciRuby',
+          'SciRuby repos',
+          'SciRuby repo watchers',
           'Indian election data'
         ],
       Desc:     [
-          'Analysis of fork and issue count present in sciruby org',
-          'Popular SciRuby repo in the point of view of number of watchers',
-          'Plotting a small dataset of obtained election results'
+          'Shows import from JSON API, charts, tables, and export',
+          'Shows import from JSON API, charts, tables, and export',
+          'Shows import from HTML pages, charts and tables'
         ],
       Link: [
         view_context.link_to('sciruby/repos', {action: 'repos', controller: 'sciruby_github'}, target: '_blank'),
