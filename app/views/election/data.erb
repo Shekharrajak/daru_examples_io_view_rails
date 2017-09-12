@@ -1,39 +1,112 @@
+<h1>Indian election data</h1>
 
-<div style="text-align: center;">
-  <h3> Election data</h3>
-  <b>Data is taken from url : http://eciresults.nic.in/PartyWiseResult.htm </b>
-  <p style="left: 50%">
-    <b>SciRuby Datatable : </b>
-    <%=
-      daru_table(
-        @elections,
-        adapter: :googlecharts, pageSize: 10,
-        height: 300, width: 400
-      )
-    %>
+<p>Data is taken from <a href="http://eciresults.nic.in/PartyWiseResult.htm">election commission site</a>.</p>
 
-    <b>Chart : (Pie chart) </b>
-    <br>
+<div class="panel panel-default">
+  <div class="panel-heading">Code to import data remote HTML page into <code>Daru::DataFrame</code> (yes, that's all!):</div>
+  <div class="panel-body">
     <%=
-      daru_chart(
-        @elections.clone('Party', 'Won'),
-        type: :pie,
-        adapter: :googlecharts,
-        height: 500,
-        width: 1000
-      )
+      rouge(%{
+        @elections = Daru::DataFrame
+          .read_html('http://eciresults.nic.in/PartyWiseResult.htm').first
+          .tap { |df| df.delete_row(-1) } # remove "Totals" row
+          .recode_vectors { |v| v.name == 'Party' ? v : v.recode(&:to_i) } # parse numeric columns
+      })
     %>
+  </div>
+</div>
 
-    <b>Chart : (Histogram chart) </b>
-    <br>
-    <%=
-      daru_chart(
-        @elections.clone('Party', 'Won'),
-        type: :histogram,
-        adapter: :googlecharts,
-        height: 500,
-        width: 1000
-      )
-    %>
-  </p>
+<h2>Data table</h2>
+
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-1" aria-controls="view" role="tab" data-toggle="view-1">View</a></li>
+    <li role="presentation"><a href="#code-1" aria-controls="code" role="tab" data-toggle="code-1">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-1">
+      <%=
+        daru_table(
+          @elections,
+          adapter: :googlecharts, pageSize: 10,
+          height: 300, width: 400
+        )
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-1">
+      <%= rouge(%{
+        daru_table(
+          @elections,
+          adapter: :googlecharts, pageSize: 10,
+          height: 300, width: 400
+        )
+      }) %>
+    </div>
+  </div>
+</div>
+
+<h2>Pie chart</h2>
+
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-2" aria-controls="view" role="tab" data-toggle="view-2">View</a></li>
+    <li role="presentation"><a href="#code-2" aria-controls="code" role="tab" data-toggle="code-2">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-2">
+      <%=
+        daru_chart(
+          @elections.clone('Party', 'Won'),
+          type: :pie,
+          adapter: :googlecharts,
+          height: 500,
+          width: 1000
+        )
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-2">
+      <%= rouge(%{
+        daru_chart(
+          @elections.clone('Party', 'Won'), # we need only party name and 1 numeric column
+          type: :pie,
+          adapter: :googlecharts,
+          height: 500,
+          width: 1000
+        )
+      }) %>
+    </div>
+  </div>
+</div>
+
+<h2>Histogram chart</h2>
+
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-3" aria-controls="view-3" role="tab" data-toggle="view-3">View</a></li>
+    <li role="presentation"><a href="#code-3" aria-controls="code-3" role="tab" data-toggle="code-3">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-3">
+      <%=
+        daru_chart(
+          @elections.clone('Party', 'Won'),
+          type: :histogram,
+          adapter: :googlecharts,
+          height: 500,
+          width: 1000
+        )
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-3">
+      <%= rouge(%{
+        daru_chart(
+          @elections.clone('Party', 'Won'),
+          type: :histogram,
+          adapter: :googlecharts,
+          height: 500,
+          width: 1000
+        )
+      }) %>
+    </div>
+  </div>
 </div>

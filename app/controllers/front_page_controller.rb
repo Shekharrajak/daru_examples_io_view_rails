@@ -1,25 +1,21 @@
 class FrontPageController < ApplicationController
-
-  layout 'datatables_layout'
-
   def home
     @links = Daru::DataFrame.new({
       Routes:   [
-          'Repo forks and issue count',
-          'Popular repo of SciRuby',
+          'SciRuby repos',
+          'SciRuby repo watchers',
           'Indian election data'
         ],
       Desc:     [
-          'Analysis of fork and issue count present in sciruby org',
-          'Popular SciRuby repo in the point of view of number of watchers',
-          'Plotting a small dataset of obtained election results'
+          'Shows import from JSON API, charts, tables, and export',
+          'Shows import from JSON API, charts, tables, and export',
+          'Shows import from HTML pages, charts and tables'
         ],
       Link: [
-          "<a href='./sciruby/repos' target='_blank'>sciruby/repos</a>",
-          "<a href='./sciruby/watchers' target='_blank'>sciruby/watchers</a>",
-          "<a href='./election/data' target='_blank'>election/data</a>"
+        view_context.link_to('sciruby/repos', {action: 'repos', controller: 'sciruby_github'}, target: '_blank'),
+        view_context.link_to('sciruby/watchers', {action: 'watchers', controller: 'sciruby_github'}, target: '_blank'),
+        view_context.link_to('election/data', {action: 'data', controller: 'election'}, target: '_blank'),
         ]
-      }, order: [:Routes, :Desc, :Link])
-    @links_table = Daru::View::Table.new(@links, pageLength: 3, adapter: :datatables, height: 500, width: 700)
+      }, order: %i[Routes Desc Link])
   end
 end

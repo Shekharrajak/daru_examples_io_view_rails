@@ -1,56 +1,119 @@
+<h1>SciRuby github data analysis <small>(Using daru-view/googlecharts)</small></h1>
 
-<div style="text-align: center;">
-  <h3> SciRuby github data analysis (Using daru-view/googlecharts)</h3>
-  <b>Data is taken from url : https://api.github.com/orgs/Sciruby/repos </b>
+<p>Data is taken from <a href="https://api.github.com/orgs/Sciruby/repos">GitHub API</a></p>
 
-  <%= render 'export' %>
-
-  <p style="left: 50%">
-    <b>SciRuby/watchers Datatable : </b>
-
+<div class="panel panel-default">
+  <div class="panel-heading">Code to import data from API into <code>Daru::DataFrame</code> (yes, that's all!):</div>
+  <div class="panel-body">
     <%=
-      daru_table(
-        @watchers,
-        adapter: :googlecharts, pageSize: 10,
-        height: 300, width: 400
-      )
+      rouge(%{
+        @watchers = Daru::DataFrame.read_json(
+          'https://api.github.com/orgs/Sciruby/repos',
+          repo_name: '$..name',
+          watchers: '$..watchers'
+        )
+      })
     %>
+  </div>
+</div>
 
-    <!-- User can also do :
-    df_watchers_table =
-      Daru::View::Table(@df_watchers, adapter: :googlecharts,
-        pageSize: 10, height: 300, width: 400)
-    and then
-    use df_watchers_table.div.html_safe
-     -->
+<%= render 'export' %>
 
-    <b>Chart : (Line chart) </b>
-    <br>
-    <%=
-      daru_chart(
-        @watchers,
-        type: :line,
-        adapter: :googlecharts,
-        height: 500,
-        width: 1000
-      )
-    %>
+<h2>Data table</h2>
 
-    <b>Chart : (3D Pie chart) </b>
-    <br>
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-1" aria-controls="view" role="tab" data-toggle="view-1">View</a></li>
+    <li role="presentation"><a href="#code-1" aria-controls="code" role="tab" data-toggle="code-1">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-1">
+      <%=
+        daru_table(
+          @watchers,
+          adapter: :googlecharts, pageSize: 10,
+          height: 300, width: 400
+        )
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-1">
+      <%= rouge(%{
+        daru_table(
+          @watchers,
+          adapter: :googlecharts, pageSize: 10,
+          height: 300, width: 400
+        )
+      }) %>
+    </div>
+  </div>
+</div>
 
-    <%=
-      daru_chart(
-        @watchers,
-        type: :pie,
-        adapter: :googlecharts,
-        height: 500,
-        width: 1000,
-        title: 'Sciruby Popular repos (in the view of number of watchers)',
-        is3D: true
-      )
-    %>
+<h2>Line chart</h2>
 
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-2" aria-controls="view" role="tab" data-toggle="view-2">View</a></li>
+    <li role="presentation"><a href="#code-2" aria-controls="code" role="tab" data-toggle="code-2">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-2">
+      <%=
+        daru_chart(
+          @watchers,
+          type: :line,
+          adapter: :googlecharts,
+          height: 500,
+          width: 1000
+        )
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-2">
+      <%= rouge(%{
+        daru_chart(
+          @watchers,
+          type: :line,
+          adapter: :googlecharts,
+          height: 500,
+          width: 1000
+        )
+      }) %>
+    </div>
+  </div>
+</div>
 
-  </p>
+<h2>3D Pie chart</h2>
+
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-3" aria-controls="view-3" role="tab" data-toggle="view-3">View</a></li>
+    <li role="presentation"><a href="#code-3" aria-controls="code-3" role="tab" data-toggle="code-3">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-3">
+      <%=
+        daru_chart(
+          @watchers,
+          type: :pie,
+          adapter: :googlecharts,
+          height: 500,
+          width: 1000,
+          title: 'Sciruby Popular repos (in the view of number of watchers)',
+          is3D: true
+        )
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-3">
+      <%= rouge(%{
+        daru_chart(
+          @watchers,
+          type: :pie,
+          adapter: :googlecharts,
+          height: 500,
+          width: 1000,
+          title: 'Sciruby Popular repos (in the view of number of watchers)',
+          is3D: true
+        )
+      }) %>
+    </div>
+  </div>
 </div>
