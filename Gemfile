@@ -23,7 +23,7 @@ gem 'spreadsheet'
 gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
 
 # issue : https://github.com/Shekharrajak/daru_examples_io_view_rails/issues/3
-gem 'data_tables', git: 'https://github.com/Shekharrajak/data_tables.git'
+gem 'daru-data_tables', git: 'https://github.com/Shekharrajak/daru-data_tables.git'
 
 # remove this after https://github.com/Shekharrajak/daru_examples_io_view_rails/issues/8#issuecomment-323335270
 gem 'google_visualr', git: 'https://github.com/winston/google_visualr.git'
