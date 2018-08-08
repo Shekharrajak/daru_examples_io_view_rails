@@ -131,28 +131,32 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="view-3">
       <%=
-        daru_chart(
+        Daru::View::Plot.new(
           @countries_df.row[0..50][:Country, :NumericCode],
-          adapter: :highcharts,
-          chart: { type: 'column' },
-          css: ['.highcharts-xaxis-grid .highcharts-grid-line {stroke-width: 2px;stroke: #d8d8d8;}',
-                '.highcharts-xaxis .highcharts-tick {stroke-width: 2px;stroke: #d8d8d8;}'],
-          xAxis: { categories:  @countries_df.row[0..50][:Country].to_a },
-          title: { text: 'NumericCode of countries'}
-        )
+          { adapter: :highcharts,
+            chart: { type: 'column' },
+            xAxis: { categories:  @countries_df.row[0..50][:Country].to_a },
+            title: { text: 'NumericCode of countries'}
+          },
+          { css: ['.highcharts-xaxis-grid .highcharts-grid-line {stroke-width: 2px;stroke: #d8d8d8;}',
+                  '.highcharts-xaxis .highcharts-tick {stroke-width: 2px;stroke: #d8d8d8;}']
+          }
+        ).div.html_safe
       %>
     </div>
     <div role="tabpanel" class="tab-pane" id="code-3">
       <%= rouge(%{
-        daru_chart(
+        Daru::View::Plot.new(
           @countries_df.row[0..50][:Country, :NumericCode],
-          adapter: :highcharts,
-          chart: { type: 'column' },
-          css: ['.highcharts-xaxis-grid .highcharts-grid-line {stroke-width: 2px;stroke: #d8d8d8;}',
-                '.highcharts-xaxis .highcharts-tick {stroke-width: 2px;stroke: #d8d8d8;}'],
-          xAxis: { categories:  @countries_df.row[0..50][:Country].to_a },
-          title: { text: 'NumericCode of countries'}
-        )
+          { adapter: :highcharts,
+            chart: { type: 'column' },
+            xAxis: { categories:  @countries_df.row[0..50][:Country].to_a },
+            title: { text: 'NumericCode of countries'}
+          },
+          { css: ['.highcharts-xaxis-grid .highcharts-grid-line {stroke-width: 2px;stroke: #d8d8d8;}',
+                  '.highcharts-xaxis .highcharts-tick {stroke-width: 2px;stroke: #d8d8d8;}']
+          }
+        ).div.html_safe
       }) %>
     </div>
   </div>
