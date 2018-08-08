@@ -1,0 +1,163 @@
+<h1>Countries Data</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Code to import data from API into <code>Daru::DataFrame</code> (yes, that's all!):</div>
+  <div class="panel-body">
+    <%=
+      rouge(%{
+        url = 'http://countryapi.gear.host/v1/Country/getCountries'
+        complex_read_instance = Daru::IO::Importers::JSON.read(url)
+        @countries_df = complex_read_instance.call(
+          Country: "$..Response..Name",
+          NumericCode: "$..Response..NumericCode",
+          Area: "$..Response..Area"
+        )
+      })
+    %>
+  </div>
+</div>
+
+<h2>Data table - 250 rows</h2>
+
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-1" aria-controls="view" role="tab" data-toggle="view-1">View</a></li>
+    <li role="presentation"><a href="#code-1" aria-controls="code" role="tab" data-toggle="code-1">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-1">
+      <%=
+        Daru::View::Table.new(
+          @countries_df,
+          { adapter: :googlecharts, pageSize: 25,
+          height: 300, allowHtml: true },
+          { formatters: {
+              f1: {
+                type: 'Color',
+                range: [[0, 30000, 'white', 'red'],
+                        [30001, 100000, 'white', 'yellow'],
+                        [100001, nil, 'white', 'green']],
+                columns: 2
+              },
+              f2: {
+                type: 'Bar',
+                options: {
+                  base: 500
+                },
+                columns: 1
+              }
+            } 
+          }
+        ).div.html_safe
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-1">
+      <%= rouge(%{
+        Daru::View::Table.new(
+          @countries_df,
+          { adapter: :googlecharts, pageSize: 25,
+          height: 300, allowHtml: true },
+          { formatters: {
+              f1: {
+                type: 'Color',
+                range: [[0, 30000, 'white', 'red'],
+                        [30001, 100000, 'white', 'yellow'],
+                        [100001, nil, 'white', 'green']],
+                columns: 2
+              },
+              f2: {
+                type: 'Bar',
+                options: {
+                  base: 500
+                },
+                columns: 1
+              }
+            } 
+          }
+        ).div.html_safe
+      }) %>
+    </div>
+  </div>
+</div>
+
+<h2>Multiple Charts using PlotList</h2>
+
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-2" aria-controls="view" role="tab" data-toggle="view-2">View</a></li>
+    <li role="presentation"><a href="#code-2" aria-controls="code" role="tab" data-toggle="code-2">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-2">
+      <%=
+        Daru::View::PlotList.new(
+          [ Daru::View::Plot.new(
+              @countries_df.row[0..7][:Country, :Area],
+              adapter: :googlecharts, type: :pie, title: "Relative Area distribution for 8 countries - GoogleChart"
+            ),
+            Daru::View::Plot.new(
+              @countries_df.row[0..7][:Country, :Area],
+              adapter: :highcharts, chart: { type: 'pie' }, title: { text: 'Relative Area distribution for 8 countries - HighChart'}
+            )
+          ]
+        ).div.html_safe
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-2">
+      <%= rouge(%{
+        Daru::View::PlotList.new(
+          [ Daru::View::Plot.new(
+              @countries_df.row[0..7][:Country, :Area],
+              adapter: :googlecharts, type: :pie, title: "Relative Area distribution for 8 countries - GoogleChart"
+            ),
+            Daru::View::Plot.new(
+              @countries_df.row[0..7][:Country, :Area],
+              adapter: :highcharts, chart: { type: 'pie' }, title: { text: 'Relative Area distribution for 8 countries - HighChart'}
+            )
+          ]
+        ).div.html_safe
+      }) %>
+    </div>
+  </div>
+</div>
+
+<h2>Scatter chart with styling grid and ticks</h2>
+
+<div class="view-and-code">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#view-3" aria-controls="view-3" role="tab" data-toggle="view-3">View</a></li>
+    <li role="presentation"><a href="#code-3" aria-controls="code-3" role="tab" data-toggle="code-3">Code</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="view-3">
+      <%=
+        Daru::View::Plot.new(
+          @countries_df.row[0..50][:Country, :NumericCode],
+          { adapter: :highcharts,
+            chart: { type: 'column' },
+            xAxis: { categories:  @countries_df.row[0..50][:Country].to_a },
+            title: { text: 'NumericCode of countries'}
+          },
+          { css: ['.highcharts-xaxis-grid .highcharts-grid-line {stroke-width: 2px;stroke: #d8d8d8;}',
+                  '.highcharts-xaxis .highcharts-tick {stroke-width: 2px;stroke: #d8d8d8;}']
+          }
+        ).div.html_safe
+      %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="code-3">
+      <%= rouge(%{
+        Daru::View::Plot.new(
+          @countries_df.row[0..50][:Country, :NumericCode],
+          { adapter: :highcharts,
+            chart: { type: 'column' },
+            xAxis: { categories:  @countries_df.row[0..50][:Country].to_a },
+            title: { text: 'NumericCode of countries'}
+          },
+          { css: ['.highcharts-xaxis-grid .highcharts-grid-line {stroke-width: 2px;stroke: #d8d8d8;}',
+                  '.highcharts-xaxis .highcharts-tick {stroke-width: 2px;stroke: #d8d8d8;}']
+          }
+        ).div.html_safe
+      }) %>
+    </div>
+  </div>
+</div>

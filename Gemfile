@@ -10,7 +10,7 @@ end
 # gem 'daru-io', path: '/Users/athityakumar/Documents/GitHub/Sciruby/daru-io'
 # gem 'nyaplot', git: 'https://github.com/SciRuby/nyaplot.git'
 
-gem 'daru-io', :git => 'https://github.com/athityakumar/daru-io.git'
+gem 'daru-io', :git => 'https://github.com/Sciruby/daru-io.git'
 gem 'daru', :git => 'https://github.com/SciRuby/daru.git'
 # gem 'rsruby'
 # gem 'rsruby', :git => 'https://github.com/athityakumar/rsruby', :branch => 'fix-stack-error-with-rails'
@@ -20,7 +20,7 @@ gem 'nokogiri'
 gem 'spreadsheet'
 # gem 'daru-view', path: '/Users/shekharrajak/Documents/gsoc17/daru-view'
 # gem 'daru-io', path: '/Users/shekharrajak/Documents/gsoc17/daru-io'
-gem 'daru-view', git: 'https://github.com/Shekharrajak/daru-view.git'
+gem 'daru-view', git: 'https://github.com/SciRuby/daru-view.git'
 
 # issue : https://github.com/Shekharrajak/daru_examples_io_view_rails/issues/3
 gem 'daru-data_tables', git: 'https://github.com/Shekharrajak/daru-data_tables.git'
@@ -34,7 +34,7 @@ gem 'google_visualr', git: 'https://github.com/winston/google_visualr.git'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.21'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
